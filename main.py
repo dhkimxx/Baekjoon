@@ -22,8 +22,8 @@ for _ in range(26):
             word[maxIndex] = word[maxIndex][1:]
         else:
             word.remove(word[maxIndex])
-    print(word, newWord)
-
+    print(str(word) + ' ----> ' + str(newWord))
+print()
 word = temp
 wordSum = 0
 for i in word:
@@ -32,6 +32,8 @@ for i in word:
     Sum = 0
     for digit in range(0, len(i)):
         Sum += (10 ** digit) * (9 - newWord.index(i[digit]))
+        print(str(i[digit]) + ': ' + str(10 ** digit) + ' * ' + str(9 - newWord.index(i[digit])))
+    print(str(i) + ' Sum: ' + str(Sum))
     wordSum += Sum
 print(wordSum)
 
