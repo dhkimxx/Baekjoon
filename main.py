@@ -1,49 +1,9 @@
-N = int(input())
-word = [input() for _ in range(N)]
-temp = word.copy()
-newWord = []
-for _ in range(26):
-    if len(word) == 0:
-        break
-    maxLength = 0
-    maxIndex = 0
-    for i in word:
-        if len(i) >= maxLength:
-            maxLength = len(i)
-            maxIndex = word.index(i)
-    if word[maxIndex][0] not in newWord:
-        newWord.append(word[maxIndex][0])
-        if len(word[maxIndex]) > 1:
-            word[maxIndex] = word[maxIndex][1:]
-        else:
-            word.remove(word[maxIndex])
-    else:
-        if len(word[maxIndex]) > 1:
-            word[maxIndex] = word[maxIndex][1:]
-        else:
-            word.remove(word[maxIndex])
-    print(str(word) + ' ----> ' + str(newWord))
-print()
-word = temp
-wordSum = 0
-for i in word:
-    i = list(i)
-    i.reverse()
-    Sum = 0
-    for digit in range(0, len(i)):
-        Sum += (10 ** digit) * (9 - newWord.index(i[digit]))
-        print(str(i[digit]) + ': ' + str(10 ** digit) + ' * ' + str(9 - newWord.index(i[digit])))
-    print(str(i) + ' Sum: ' + str(Sum))
-    wordSum += Sum
-print(wordSum)
-
-"""
-반례
-ABBAA
-BABBB
-188987
-2
-BABBB
-ABBAA
-188787
-"""
+lst = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+temtLst = lst.copy()
+n = 0
+for i in range(len(lst)):
+    lst = temtLst
+    for j in range(len(lst)):
+        lst[i], lst[j] = lst[j], lst[i]
+        n += 1
+        print(lst,n)

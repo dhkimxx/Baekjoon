@@ -1,13 +1,29 @@
 N = int(input())
-timetable = [[*map(int, input().split())] for _ in range(N)]
-timetable.sort(key=lambda x: [x[1], x[0]])
-max = 0
-end = 0
-count = 0
+timetable = []
 for i in range(N):
-    if timetable[i][0] == timetable[i][1] or timetable[i][0] >= end:
-        end = timetable[i][1]
-        count += 1
-        if count > max:
-            max = count
+    meeting = {}
+    meeting['start'], meeting['end'] = map(int, input().split())
+    timetable.append(meeting)
+    for j in range(i):
+        if timetable[j]['start'] == timetable[i]['start']:
+            if timetable[j]['end'] < timetable[i]['end']:
+                timetable.pop()
+                i -= 1
+                j -= 1
+                N -= 1
+        if timetable[j]['start'] > timetable[i]['start']:
+            timetable[j], timetable[i] = timetable[i], timetable[j]
+
+max = 0
+for i in range(0,N):
+    end = 0
+    count = 0
+    for j in range(j,N):
+        if timetable[j]['start'] < end:
+            break
+        else:
+            end = timetable[j]['end']
+            count += 1
+    if count > max:
+        max = count
 print(max)
