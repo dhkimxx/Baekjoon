@@ -1,25 +1,25 @@
-N = int(input())
+import sys
+
+N = int(sys.stdin.readline())
 
 List = []
 for _ in range(N):
-    List.append(int(input()))
+    List.append(int(sys.stdin.readline()))
 List.sort()
 
 mean = round(sum(List) / N)
-
-if N % 2:
-    median = List[(N + 1) // 2 - 1]
-else:
-    median = (List[N // 2 - 1] + List[N // 2]) / 2
+median = List[(N + 1) // 2 - 1]
 
 Dic = {}
-for i in range(min(List), max(List) + 1):
+Min = min(List)
+Max = max(List)
+for i in range(Min, Max + 1):
     Dic[i] = 0
 for l in List:
     Dic[l] += 1
 modeList = []
 maxValue = max(Dic.values())
-for i in range(min(List), max(List) + 1):
+for i in range(Min, Max + 1):
     if Dic[i] == maxValue:
         modeList.append(i)
 if len(modeList) > 1:
@@ -29,7 +29,4 @@ else:
 
 range = List[-1] - List[0]
 
-print(mean)
-print(median)
-print(mode)
-print(range)
+print(f"{mean}\n{median}\n{mode}\n{range}")
