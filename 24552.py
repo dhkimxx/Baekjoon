@@ -1,16 +1,20 @@
-from collections import deque
 import sys
 
 S = list(sys.stdin.readline().rstrip())
-stack = deque()
 left = 0
 right = 0
-for s in S:
-    if s == '(':
+Sum = 0
+
+for n in range(len(S)):
+    if S[n] == '(':
+        Sum += 1
         left += 1
-        stack.append(s)
-    if s == ')':
+    if S[n] == ')':
+        Sum -= 1
         right += 1
-        if len(stack) > 0: stack.pop()
-    print(stack, len(stack))
-print(f"(: {left}  ): {right}")
+    if Sum < 0:
+        print(right)
+        sys.exit()
+    if Sum == 0:
+        left = 0
+print(left)
