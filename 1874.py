@@ -12,12 +12,9 @@ for n in range(1, N + 1):
     while len(que) != 0 and que[0] <= target:
         stack.append(que.popleft())
         result.append('+')
-    print(que, stack)
-    if target < max(stack):
+    if target < stack[-1]:
         print('NO')
         sys.exit()
     stack.pop()
     result.append('-')
-for r in result:
-    print(r)
-
+print('\n'.join(result))
