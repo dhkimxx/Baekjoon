@@ -1,8 +1,3 @@
-#24528
-import sys
-
-N = int(sys.stdin.readline())
-Pair = []
-for n in range(N):
-    Pair.append(sys.stdin.readline().split())
-print(Pair)
+list = [1,2,3,4,5,6,7,8,9,10]
+sum = sum(l if l > 5 else 0 for l in list)
+print(sum)
