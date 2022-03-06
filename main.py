@@ -1,4 +1,4 @@
-for i in range(1, 10):
-    for j in range(1, 10):
-        print(i * j, end=" ")
-    print()
+N = int(input())
+for n in range(N):
+    nums = input()
+    print(int(nums[0]) + int(nums[2]))
