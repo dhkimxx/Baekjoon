@@ -1,19 +1,18 @@
 import sys
 
 N, M = map(int, sys.stdin.readline().split())
-Nums = list(sys.stdin.readline().split())
-Nums.sort()
+arr = list(map(int, sys.stdin.readline().split()))
+arr.sort()
 
 
 def backtracking(cnt, result):
-    print(cnt, result)
     if cnt == M:
-        print(' '.join(result))
-    temp = result.copy()
-    for i in range(cnt, M):
-        result.append(Nums[i])
-        backtracking(cnt + 1, result)
-        result = temp
+        print(*result)
+    for i in range(N):
+        if arr[i] not in result:
+            result.append(arr[i])
+            backtracking(cnt + 1, result)
+            result.remove(arr[i])
 
 
 backtracking(0, [])
