@@ -10,7 +10,7 @@ def backtracking(cnt, result):
         print(*result)
         return
     for i in range(N):
-        if arr[i] not in result:
+        if len(result) > 0 and arr[i] >= result[-1] or len(result) == 0:
             result.append(arr[i])
             backtracking(cnt + 1, result)
             result.remove(arr[i])
