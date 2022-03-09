@@ -1,8 +1,6 @@
-while 1:
-    A, B = map(int, input().split())
-    if A == 0 and B == 0:
-        exit()
-    if A > B:
-        print('Yes')
-    else:
-        print('No')
+for i in range(1,10):
+    for j in range(1,10):
+        if i*j < 10:
+            print(" ",end="")
+        print(i*j,end=" ")
+    print()
