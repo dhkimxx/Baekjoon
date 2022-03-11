@@ -1,9 +1,9 @@
-S = int(input())
-cnt = 0
-Sum = 0
-while 1:
-    cnt += 1
-    Sum += cnt
-    if Sum > S:
-        print(cnt - 1)
-        exit()
+a, b = map(int, input().split())
+print(a // b, end='')
+if a % b:
+    i = 0
+    print('.', end='')
+    while a % b and i < 1000:
+        a = a % b * 10
+        i += 1
+        print(a // b, end='')
