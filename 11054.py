@@ -29,6 +29,7 @@ for i in range(0, N):
             dpLIS[i] = max(dpLIS[i], dpLIS[j] + 1)
         if A[N - 1 - i] > A[N - 1 - j]:
             dpLDS[N - 1 - i] = max(dpLDS[N - 1 - i], dpLDS[N - 1 - j] + 1)
+            
 for i in range(0, N):
     length.append(dpLIS[i] + dpLDS[i])
 print(max(length))
