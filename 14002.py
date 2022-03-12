@@ -9,8 +9,8 @@ for i in range(0, N):
         if A[i] > A[j] and len(LIS[i]) < len(LIS[j]) + 1:
             LIS[i] = LIS[j] + [A[i]]
     if len(LIS[i]) > maxLength:
-        maxLengthLIS = LIS[i]
+        maxLIS = LIS[i]
         maxLength = len(LIS[i])
 print(maxLength)
-for lis in maxLengthLIS:
+for lis in maxLIS:
     print(lis, end=" ")
