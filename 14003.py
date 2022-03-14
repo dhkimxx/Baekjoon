@@ -33,4 +33,5 @@ for n in range(maxDP_idx, -1, -1):
     if DP[n] == DP[maxDP_idx] - 1 and arr[n] < arr[maxDP_idx]:
         resultLIS.append(arr[n])
         maxDP_idx = n
+
 print(' '.join(map(str, reversed(resultLIS))))
