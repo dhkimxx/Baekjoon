@@ -25,6 +25,7 @@ for n in range(1, N):
     if DP[n] > maxDP:
         maxDP_idx = n
         maxDP = DP[n]
+
 print(len(LIS))
 
 resultLIS = [arr[maxDP_idx]]
