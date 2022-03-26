@@ -3,6 +3,8 @@ def GCD(a, b):
         return a
     else:
         return GCD(b, a % b)
+
+
 T = int(input())
 for _ in range(T):
     A, B = map(int, input().split())
