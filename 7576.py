@@ -24,7 +24,7 @@ def bfs(queue):
                 continue
             if graph[nx][ny] == -1:
                 continue
-            if graph[nx][ny] == 0 or graph[nx][ny] > graph[x][y] + 1:
+            if graph[nx][ny] == 0:
                 graph[nx][ny] = graph[x][y] + 1
                 queue.append((nx, ny))
 
