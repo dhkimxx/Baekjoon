@@ -1,19 +1,19 @@
 import sys
+from collections import deque
 
-sys.setrecursionlimit(10 ** 6)
 
-def dfs(v, c):
-    visited[v] = c
-    if c == 1:
-        nc = 2
-    if c == 2:
-        nc = 1
-    for nv in graph[v]:
-        if visited[nv] == 0:
-            dfs(nv, nc)
-        elif visited[nv] == visited[v]:
-            global result
-            result = 'NO'
+def bfs(start, c):
+    queue = deque([(start, c)])
+    visited[start] = c
+    while queue:
+        v, c = queue.popleft()
+        for nv in graph[v]:
+            if visited[nv] == 0:
+                visited[nv] = -c
+                queue.append((nv, -c))
+            elif visited[nv] == visited[v]:
+                return False
+    return True
 
 
 K = int(sys.stdin.readline())
@@ -24,8 +24,12 @@ for k in range(K):
     for e in range(E):
         u, v = map(int, sys.stdin.readline().split())
         graph[u].append(v)
+        graph[v].append(u)
+
     result = 'YES'
     for i in range(1, V + 1):
         if visited[i] == 0:
-            dfs(i, 1)
+            if not bfs(i, 1):
+                result = 'NO'
+                break
     print(result)
