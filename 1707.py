@@ -24,9 +24,7 @@ for k in range(K):
     for e in range(E):
         u, v = map(int, sys.stdin.readline().split())
         graph[u].append(v)
-        graph[v].append(u)
     result = 'YES'
-
     for i in range(1, V + 1):
         if visited[i] == 0:
             dfs(i, 1)
