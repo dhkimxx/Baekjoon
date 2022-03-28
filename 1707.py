@@ -1,19 +1,20 @@
 import sys
 
+sys.setrecursionlimit(10 ** 6)
+
 def dfs(v, c):
     visited[v] = c
-    print(1)
     if c == 1:
         nc = 2
     if c == 2:
         nc = 1
-
     for nv in graph[v]:
-        if visited[nv] == '0':
+        if visited[nv] == 0:
             dfs(nv, nc)
-        elif visited[nv] != nc:
+        elif visited[nv] == visited[v]:
             global result
             result = 'NO'
+
 
 K = int(sys.stdin.readline())
 for k in range(K):
@@ -27,6 +28,6 @@ for k in range(K):
     result = 'YES'
 
     for i in range(1, V + 1):
-        if visited[i] == '0':
+        if visited[i] == 0:
             dfs(i, 1)
     print(result)
