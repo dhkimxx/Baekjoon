@@ -2,6 +2,7 @@ import sys
 
 def dfs(v, c):
     visited[v] = c
+    print(1)
     if c == 1:
         nc = 2
     if c == 2:
@@ -11,6 +12,7 @@ def dfs(v, c):
         if visited[nv] == '0':
             dfs(nv, nc)
         elif visited[nv] != nc:
+            global result
             result = 'NO'
 
 K = int(sys.stdin.readline())
@@ -22,10 +24,9 @@ for k in range(K):
         u, v = map(int, sys.stdin.readline().split())
         graph[u].append(v)
         graph[v].append(u)
-
-    check = 1
     result = 'YES'
+
     for i in range(1, V + 1):
         if visited[i] == '0':
-            dfs(i, check)
+            dfs(i, 1)
     print(result)
