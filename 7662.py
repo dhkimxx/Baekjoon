@@ -1,5 +1,4 @@
 import sys
-import heapq
 
 for _ in range(int(sys.stdin.readline())):
     arr = []
