@@ -30,7 +30,7 @@ for _ in range(int(input())):
             heapq.heappop(max_heap)
         while min_heap and not visited[min_heap[0][1]]:
             heapq.heappop(min_heap)
-    if not max_heap or not  min_heap:
+    if not max_heap or not min_heap:
         print('EMPTY')
     else:
         print(-max_heap[0][0], min_heap[0][0])
