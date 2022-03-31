@@ -1,5 +1,6 @@
 N = int(input())
 arr = list(map(int, input().split()))
+arr.sort()
 MIN = int(2e9)
 candidate = (arr[0], arr[-1])
 
