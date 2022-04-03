@@ -1,9 +1,6 @@
 import sys
 sys.setrecursionlimit(100000)
 
-N = int(sys.stdin.readline())
-nextVertex = [0] * (N + 1)
-dp = [0] * (N + 1)
 
 def numSum(n):
     numberSum = 0
@@ -12,11 +9,6 @@ def numSum(n):
         n = n // 10
     return numberSum
 
-
-for i in range(1, N + 1):
-    nextVertex[i] = i + numSum(i)
-    if nextVertex[i] > N:
-        nextVertex[i] -= N
 
 def dfs(v):
     global count
@@ -30,6 +22,16 @@ def dfs(v):
         count += dp[nextVertex[v]]
         return
     dfs(nextVertex[v])
+
+
+N = int(sys.stdin.readline())
+nextVertex = [0] * (N + 1)
+dp = [0] * (N + 1)
+
+for i in range(1, N + 1):
+    nextVertex[i] = i + numSum(i)
+    if nextVertex[i] > N:
+        nextVertex[i] -= N
 
 result = 0
 for i in range(1, N + 1):
