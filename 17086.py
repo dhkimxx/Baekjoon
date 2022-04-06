@@ -14,3 +14,6 @@ def bfs(start):
     queue = deque([start])
 
 
+for n in range(N):
+    for m in range(M):
+        bfs()
