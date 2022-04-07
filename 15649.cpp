@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include <algorithm> // vector에서 find 함수 사용하기 위해 (컴파일에러)
+#include <algorithm>
 using namespace std;
 
 int n_and_m(int end, int max_depth, vector<int> stack) {

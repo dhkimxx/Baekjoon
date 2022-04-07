@@ -1,4 +1,3 @@
-//Âü°í https://www.youtube.com/watch?v=J6oweb6T8y4
 #include <iostream>
 #include <algorithm>
 

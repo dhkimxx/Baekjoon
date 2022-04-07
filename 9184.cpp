@@ -1,5 +1,6 @@
 #include<iostream>
 using namespace std;
+
 int arr[101][101][101] = { 0 };
 
 int w(int a, int b, int c) {
