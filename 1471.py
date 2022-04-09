@@ -1,4 +1,5 @@
 import sys
+
 sys.setrecursionlimit(100000)
 
 
@@ -12,7 +13,6 @@ def numSum(n):
 
 def dfs(v):
     global count
-
     if visited[v]:
         return
     visited[v] = True
@@ -41,6 +41,7 @@ for i in range(1, N + 1):
     stack = []
     count = 0
     dfs(i)
+    print(*stack)
     dp[i] = count
     result = max(count, result)
     for s in stack[1:]:
