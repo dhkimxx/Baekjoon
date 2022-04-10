@@ -6,7 +6,6 @@ bool visited[200001];
 int dp[200001];
 vector<int> vec;
 int N;
-int cnt;
 
 int nextVertex(int n){
     int sum = n;
@@ -20,17 +19,12 @@ int nextVertex(int n){
 
 int dfs(int v){
     if(dp[v]){
-        int cicleSize = dp[v];
-        while (size(vec)){
-            dp[vec.back()] = ++cicleSize;
-            vec.pop_back();
-        }
-        return 0;
+        return dp[v];
     }
-    if(visited[v]){
+    else if(visited[v]){
         vector<int> cicle;
         int cicleSize = 0;
-        while(size(vec)){
+        while(true){
             cicleSize += 1;
             cicle.push_back(vec.back());
             vec.pop_back();
@@ -39,16 +33,13 @@ int dfs(int v){
         for(int i: cicle){
             dp[i] = cicleSize;
         }
-        while (size(vec)){
-            dp[vec.back()] = ++cicleSize;
-            vec.pop_back();
-        }
-        return 0;
+        return dp[v];
     }
     visited[v] = true;
-    cnt++;
     vec.push_back(v);
-    return dfs(nextVertex(v));
+    int temp = dfs(nextVertex(v));
+    if(dp[v] == 0) dp[v] = temp + 1;
+    return dp[v];
 }
 
 int main() {
@@ -58,7 +49,6 @@ int main() {
     for(int i = 1; i <= N; i++){
         if(visited[i]) continue;
         vec.clear();
-        cnt = 0;
         dfs(i);
         result = result > dp[i] ? result : dp[i];
     }
