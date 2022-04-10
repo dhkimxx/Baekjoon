@@ -1,6 +1,6 @@
 import sys
 
-sys.setrecursionlimit(100000)
+sys.setrecursionlimit(50000)
 
 N = int(input())
 visited = [False] * (N + 1)
