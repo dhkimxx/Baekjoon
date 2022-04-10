@@ -4,7 +4,7 @@ using namespace std;
 
 bool visited[200001];
 int dp[200001];
-vector<int> vec;
+vector<int> STACK;
 int N;
 
 int nextVertex(int n){
@@ -26,8 +26,8 @@ int dfs(int v){
         int cycleSize = 0;
         while(true){
             cycleSize += 1;
-            cycle.push_back(vec.back());
-            vec.pop_back();
+            cycle.push_back(STACK.back());
+            STACK.pop_back();
             if(cycle.back() == v) break;
         }
         for(int i: cycle){
@@ -36,7 +36,7 @@ int dfs(int v){
         return dp[v];
     }
     visited[v] = true;
-    vec.push_back(v);
+    STACK.push_back(v);
     int temp = dfs(nextVertex(v));
     if(dp[v] == 0) dp[v] = temp + 1;
     return dp[v];
@@ -48,7 +48,7 @@ int main() {
     cin >> N;
     for(int i = 1; i <= N; i++){
         if(visited[i]) continue;
-        vec.clear();
+        STACK.clear();
         dfs(i);
         result = result > dp[i] ? result : dp[i];
     }
