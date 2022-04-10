@@ -22,16 +22,16 @@ int dfs(int v){
         return dp[v];
     }
     else if(visited[v]){
-        vector<int> cicle;
-        int cicleSize = 0;
+        vector<int> cycle;
+        int cycleSize = 0;
         while(true){
-            cicleSize += 1;
-            cicle.push_back(vec.back());
+            cycleSize += 1;
+            cycle.push_back(vec.back());
             vec.pop_back();
-            if(cicle.back() == v) break;
+            if(cycle.back() == v) break;
         }
-        for(int i: cicle){
-            dp[i] = cicleSize;
+        for(int i: cycle){
+            dp[i] = cycleSize;
         }
         return dp[v];
     }
