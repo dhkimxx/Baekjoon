@@ -2,49 +2,47 @@ import sys
 
 sys.setrecursionlimit(100000)
 
+N = int(input())
+visited = [False] * (N + 1)
+dp = [0] * (N + 1)
+stack = []
 
-def numSum(n):
-    numberSum = 0
-    while n != 0:
-        numberSum += n % 10
-        n = n // 10
-    return numberSum
+
+def nextVertex(n):
+    SUM = n
+    while n:
+        SUM += n % 10
+        n //= 10
+    if SUM > N:
+        SUM -= N
+    return SUM
 
 
 def dfs(v):
-    global count
+    if dp[v]:
+        return dp[v]
     if visited[v]:
-        return
+        cycle = []
+        cycleSize = 0
+        while 1:
+            cycleSize += 1
+            cycle.append(stack.pop())
+            if cycle[-1] == v:
+                break
+        for c in cycle:
+            dp[c] = cycleSize
+        return dp[v]
     visited[v] = True
     stack.append(v)
-    count += 1
-    if dp[nextVertex[v]] != 0:
-        count += dp[nextVertex[v]]
-        return
-    dfs(nextVertex[v])
+    temp = dfs(nextVertex(v))
+    if dp[v] == 0:
+        dp[v] = temp + 1
+    return dp[v]
 
-
-N = int(sys.stdin.readline())
-nextVertex = [0] * (N + 1)
-dp = [0] * (N + 1)
-
-for i in range(1, N + 1):
-    nextVertex[i] = i + numSum(i)
-    if nextVertex[i] > N:
-        nextVertex[i] -= N
 
 result = 0
 for i in range(1, N + 1):
-    if dp[i] != 0:
+    if visited[i]:
         continue
-    visited = [0] * (N + 1)
-    stack = []
-    count = 0
-    dfs(i)
-    print(*stack)
-    dp[i] = count
-    result = max(count, result)
-    for s in stack[1:]:
-        dp[s] = count - 1
-
+    result = max(result, dfs(i))
 print(result)
