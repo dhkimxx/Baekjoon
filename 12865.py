@@ -9,7 +9,7 @@ for i in range(N):
 
 for i in range(1, N + 1):
     for j in range(1, K + 1):
-        if j >= weight[i]:
+        if weight[i] <= j:
             dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - weight[i]] + value[i])
         else:
             dp[i][j] = dp[i - 1][j]
