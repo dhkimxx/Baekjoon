@@ -45,5 +45,3 @@ def bfs(x, y):
 
 
 bfs(x1, y1)
-for i in range(H):
-    print(*c[i])
