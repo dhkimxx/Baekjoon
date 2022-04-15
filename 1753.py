@@ -3,12 +3,13 @@ import sys
 input = sys.stdin.readline
 
 V, E = map(int, input().split())
-start = int(input())
+K = int(input())
 graph = [[] for _ in range(V + 1)]
 distance = [1e9] * (V + 1)
 for i in range(E):
     u, v, w = map(int, input().split())
     graph[u].append((v, w))
+
 
 def dijkstra(start):
     q = []
@@ -24,7 +25,8 @@ def dijkstra(start):
                 distance[i[0]] = cost
                 heapq.heappush(q, (cost, i[0]))
 
-dijkstra(start)
+
+dijkstra(K)
 for i in range(1, V + 1):
     if distance[i] == 1e9:
         print('INF')
