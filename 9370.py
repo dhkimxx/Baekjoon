@@ -23,18 +23,18 @@ for _ in range(int(input())):
     S, G, H = map(int, input().split())
     graph = [[] for _ in range(N + 1)]
     distance = [[1e9] * (N + 1) for _ in range(N + 1)]
-    for m in range(M):
+    for _ in range(M):
         A, B, D = map(int, input().split())
         graph[A].append((B, D))
         graph[B].append((A, D))
     candidate = []
-    for t in range(T):
+    for _ in range(T):
         candidate.append(int(input()))
     for start in [S, G, H]:
         dijkstra(start)
-    for cnd in sorted(candidate):
-        result = min(distance[S][G] + distance[G][H] + distance[H][cnd],
-                     distance[S][H] + distance[H][G] + distance[G][cnd])
-        if distance[S][cnd] >= result:
-            print(cnd, end=' ')
+    for end in sorted(candidate):
+        result = min(distance[S][G] + distance[G][H] + distance[H][end],
+                     distance[S][H] + distance[H][G] + distance[G][end])
+        if distance[S][end] == result:
+            print(end, end=' ')
     print()
