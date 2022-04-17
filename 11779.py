@@ -39,6 +39,7 @@ while now != start:
 print(distance[end])
 print(len(route))
 print(' '.join(map(str, reversed(route))))
+
 # import sys
 # input = sys.stdin.readline
 # import heapq
