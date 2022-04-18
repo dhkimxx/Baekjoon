@@ -1,6 +1,5 @@
 K, N = map(int, input().split())
 arr = [0] + list(map(int, input().split()))
-result = [0] * (K + 1)
 for i in range(1, K + 1):
     arr[i] = arr[i - 1] + arr[i]
 max = -1e9
