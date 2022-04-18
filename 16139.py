@@ -1,5 +1,6 @@
 import sys
 input = sys.stdin.readline
+
 S = list(input().rstrip())
 count = [[0] * 26 for _ in range(len(S) + 1)]
 for i in range(1, len(S) + 1):
