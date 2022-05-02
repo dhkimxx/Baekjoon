@@ -11,9 +11,8 @@ for i in range(N):
         if graph[i][j] == 0:
             index.append((i, j))
             safe_zone += 1
-        for j in range(M):
-            if graph[i][j] == 2:
-                virus.append((i, j))
+        if graph[i][j] == 2:
+            virus.append((i, j))
 len_index = len(index)
 
 dx = [-1, 1, 0, 0]
