@@ -1,3 +1,4 @@
+# bellman-ford algorithm
 import sys
 
 input = sys.stdin.readline
