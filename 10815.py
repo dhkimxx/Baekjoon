@@ -3,13 +3,12 @@ input = sys.stdin.readline
 
 N = int(input())
 cards = list(map(int, input().split()))
+dictionary = {card: 1 for card in cards}
 M = int(input())
 targets = list(map(int, input().split()))
-dictionary = {target: 0 for target in targets}
-for card in cards:
-    dictionary[card] = 1
+
 for target in targets:
-    if dictionary[target]:
+    if dictionary.get(target, 0):
         print(1, end=' ')
     else:
         print(0, end=' ')
