@@ -24,11 +24,9 @@ def bfs(sx, sy):
                     visited[nx][ny] = 1
 
 
-timer = 1
-while 1:
+timer = 0
+while sum(map(sum, graph)):
     visited = [[0] * M for _ in range(N)]
     bfs(0, 0)
-    if sum(map(sum, graph)) == 0:
-        print(timer)
-        break
     timer += 1
+print(timer)
