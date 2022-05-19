@@ -22,13 +22,11 @@ def bfs(sx, sy):
                     visited[nx][ny] = 1
 
 
-timer = 1
-cnt = sum(map(sum, graph))
-while cnt:
+timer = 0
+while sum(map(sum, graph)):
+    cnt = sum(map(sum, graph))
     visited = [[0] * W for _ in range(H)]
     bfs(0, 0)
-    if sum(map(sum, graph)) == 0:
-        print(timer)
-        print(cnt)
     timer += 1
-    cnt = sum(map(sum, graph))
+print(timer)
+print(cnt)
