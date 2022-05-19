@@ -17,7 +17,6 @@ def bfs():
             if not checked.get(str(new_arr), 0):
                 checked[str(new_arr)] = checked[str(now_arr)] + 1
                 q.append(new_arr)
-                print(new_arr)
     return -1
 
 
