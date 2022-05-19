@@ -1,5 +1,4 @@
 from collections import deque
-import copy
 
 H, W = map(int, input().split())
 graph = [list(map(int, input().split())) for _ in range(H)]
@@ -16,23 +15,20 @@ def bfs(sx, sy):
             nx, ny = x + dx[i], y + dy[i]
             if 0 <= nx < H and 0 <= ny < W:
                 if graph[nx][ny]:
-                    temp_graph[nx][ny] = 0
+                    graph[nx][ny] = 0
+                    visited[nx][ny] = 1
                 if not visited[nx][ny] and not graph[nx][ny]:
                     q.append((nx, ny))
                     visited[nx][ny] = 1
-    return 1
 
 
 timer = 1
-cheese = sum(map(sum, graph))
-while 1:
+cnt = sum(map(sum, graph))
+while cnt:
     visited = [[0] * W for _ in range(H)]
-    temp_graph = copy.deepcopy(graph)
     bfs(0, 0)
-    graph = copy.deepcopy(temp_graph)
     if sum(map(sum, graph)) == 0:
         print(timer)
-        print(cheese)
-        break
+        print(cnt)
     timer += 1
-    cheese = sum(map(sum, graph))
+    cnt = sum(map(sum, graph))
