@@ -1,6 +1,5 @@
 import math
 import sys
-
 N = int(sys.stdin.readline())
 arr = [int(input()) for _ in range(N)]
 arr.sort()
