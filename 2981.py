@@ -10,7 +10,6 @@ for i in range(N - 1):
 prev = gap[0]
 for i in range(1, len(gap)):
     prev = math.gcd(prev, gap[i])
-
 for i in range(2, int(math.sqrt(prev)) + 1):
     if prev % i == 0:
         ans.append(i)
