@@ -41,7 +41,7 @@ def lca(a, b):
         if parent[a][i] != parent[b][i]:
             a = parent[a][i]
             b = parent[b][i]
-    return a
+    return parent[a][0]
 
 
 set_parent()
