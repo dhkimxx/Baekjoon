@@ -1,4 +1,7 @@
 from collections import deque
+import sys
+input = sys.stdin.readline
+LOG = 21 # 2^20 = 1,000,000
 
 N = int(input())
 graph = [[] for _ in range(N + 1)]
@@ -31,6 +34,7 @@ def lca(a, b):
         a = parent[a]
         b = parent[b]
     return a
+
 
 bfs(1)
 M = int(input())
