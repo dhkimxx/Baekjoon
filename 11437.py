@@ -8,7 +8,6 @@ for _ in range(N-1):
     graph[a].append(b)
     graph[b].append(a)
 
-
 def bfs(start):
     q = deque([start])
     depth[start] = 1
@@ -19,7 +18,6 @@ def bfs(start):
                 depth[nv] = depth[v] + 1
                 parent[nv] = v
                 q.append(nv)
-
 
 def lca(a, b):
     while depth[a] != depth[b]:
@@ -32,7 +30,6 @@ def lca(a, b):
         a = parent[a]
         b = parent[b]
     return a
-
 
 depth = [False] * (N + 1)
 bfs(1)
