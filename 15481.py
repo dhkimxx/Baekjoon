@@ -24,10 +24,11 @@ while q and cnt < N:
         depth[now] = depth[last] + 1
         mst_sum_weight += weight
         cnt += 1
+        parent[now][0] = last
+        LOG_weight[now][0] = weight
         for next in graph[now]:
             heapq.heappush(q, (next[0], next[1], now))
-            parent[next[1]][0] = now
-            LOG_weight[next[1]][0] = next[0]
+
 
 for i in range(1, LOG):
     for j in range(1, N + 1):
@@ -40,18 +41,18 @@ def lca(a, b):
         a, b = b, a
     maxV = 0
     for i in range(LOG - 1, -1, -1):
-        if depth[b] >= depth[a]:
+        if depth[b] - depth[a] >= (1 << i):
             maxV = max(maxV, LOG_weight[b][i])
             b = parent[b][i]
     if a == b:
         return maxV
     for i in range(LOG - 1, -1, -1):
         if parent[a][i] != parent[b][i]:
-            maxV = max(maxV, LOG_weight[a][i], LOG_weight[b][i])
+            maxV = max(maxV, LOG_weight[b][i], LOG_weight[a][i])
             a = parent[a][i]
             b = parent[b][i]
+    return max(maxV, LOG_weight[a][0], LOG_weight[b][0])
 
-    return maxV
 
 for u, v, w in input_lines:
-    print(max(mst_sum_weight, mst_sum_weight - lca(u, v) + w))
+    print(mst_sum_weight - lca(u, v) + w)
