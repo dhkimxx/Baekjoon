@@ -29,7 +29,6 @@ while q and cnt < N:
         for next in graph[now]:
             heapq.heappush(q, (next[0], next[1], now))
 
-
 for i in range(1, LOG):
     for j in range(1, N + 1):
         parent[j][i] = parent[parent[j][i-1]][i-1]
