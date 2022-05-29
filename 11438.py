@@ -1,7 +1,7 @@
 from collections import deque
 import sys
 input = sys.stdin.readline
-LOG = 21    # 2^20 = 1,000,000
+LOG = 17
 
 N = int(input())
 graph = [[] for _ in range(N + 1)]
