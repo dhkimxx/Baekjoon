@@ -21,7 +21,6 @@ def bfs():
     ans = -1
     while q:
         rx, ry, bx, by, count = q.popleft()
-        print(rx, ry, bx, by, count, q)
         if count > 10:
             break
         if graph[rx][ry] == 'O' and graph[bx][by] != 'O':
@@ -38,7 +37,7 @@ def bfs():
                     if graph[next_rx][next_ry] == '#':
                         next_rx -= dx[i]
                         next_ry -= dy[i]
-                        break
+                    break
             while 1:
                 if graph[next_bx][next_by] != '#' and graph[next_bx][next_by] != 'O':
                     next_bx += dx[i]
@@ -47,7 +46,7 @@ def bfs():
                     if graph[next_bx][next_by] == '#':
                         next_bx -= dx[i]
                         next_by -= dy[i]
-                        break
+                    break
             if next_rx == next_bx and next_ry == next_by:
                 if graph[next_rx][next_ry] != 'O':
                     red_dist = abs(next_rx - rx) + abs(next_ry - ry)
@@ -61,7 +60,6 @@ def bfs():
             if visited[next_rx][next_ry][next_bx][next_by] == 0:
                 visited[next_rx][next_ry][next_bx][next_by] = 1
                 q.append([next_rx, next_ry, next_bx, next_by, count + 1])
-
     return ans
 
 
