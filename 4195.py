@@ -29,4 +29,3 @@ for _ in range(int(input())):
             parent[b] = b
             count[b] = 1
         print(union_find(a, b))
-
