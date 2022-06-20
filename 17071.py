@@ -6,7 +6,7 @@ if N == K:
     exit()
 INF = 500000
 visited = [[0] * 2 for _ in range(INF + 1)]
-ok = False
+flag = False
 turn = 1
 q = deque([N])
 visited[N][0] = 1
@@ -15,27 +15,26 @@ while q:
     if K > INF:
         break
     if visited[K][turn % 2]:
-        ok = True
+        flag = True
         break
-    ThisTurnSize = len(q)
-    for j in range(ThisTurnSize):
+    for j in range(len(q)):
         dist = q.popleft()
         for nx in [dist + 1, dist - 1, dist * 2]:
             if nx < 0 or nx > INF:
                 continue
             if nx == K:
-                ok = True
+                flag = True
                 break
             if visited[nx][turn % 2]:
                 continue
             visited[nx][turn % 2] = 1
             q.append(nx)
-        if ok:
+        if flag:
             break
-    if ok:
+    if flag:
         break
     turn += 1
-if ok:
+if flag:
     print(turn)
 else:
     print(-1)
