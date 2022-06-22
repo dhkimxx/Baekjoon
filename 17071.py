@@ -19,16 +19,13 @@ while q:
         break
     for j in range(len(q)):
         v = q.popleft()
-        for nx in [v + 1, v - 1, v * 2]:
-            if nx < 0 or nx > INF:
-                continue
-            if nx == K:
-                flag = True
-                break
-            if visited[nx][turn % 2]:
-                continue
-            visited[nx][turn % 2] = 1
-            q.append(nx)
+        for nv in [v + 1, v - 1, v * 2]:
+            if 0 <= nv <= INF and not visited[nv][turn % 2]:
+                visited[nv][turn % 2] = 1
+                q.append(nv)
+                if nv == K:
+                    flag = True
+                    break
         if flag:
             break
     if flag:
