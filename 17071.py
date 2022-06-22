@@ -18,8 +18,8 @@ while q:
         flag = True
         break
     for j in range(len(q)):
-        dist = q.popleft()
-        for nx in [dist + 1, dist - 1, dist * 2]:
+        v = q.popleft()
+        for nx in [v + 1, v - 1, v * 2]:
             if nx < 0 or nx > INF:
                 continue
             if nx == K:
