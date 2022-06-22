@@ -10,7 +10,7 @@ flag = False
 turn = 1
 q = deque([N])
 visited[N][0] = 1
-while q:
+while 1:
     K += turn
     if K > INF:
         break
