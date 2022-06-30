@@ -21,19 +21,17 @@ def bfs():
                         q.append((nx, ny, cnt))
                 else:
                     if cnt < K:
-                        if visited[nx][ny][cnt + 1] > visited[x][y][cnt] + 1:
-                            if visited[x][y][cnt] % 2 == 1:
-                                visited[nx][ny][cnt + 1] = visited[x][y][cnt] + 1
-                                q.append((nx, ny, cnt + 1))
-                            else:
-                                visited[nx][ny][cnt + 1] = visited[x][y][cnt] + 2
-                                q.append((nx, ny, cnt + 1))
-
+                        if visited[nx][ny][cnt + 1] > visited[x][y][cnt] + 1 \
+                                and visited[x][y][cnt] % 2 == 1:
+                            visited[nx][ny][cnt + 1] = visited[x][y][cnt] + 1
+                            q.append((nx, ny, cnt + 1))
+                        if visited[nx][ny][cnt + 1] > visited[x][y][cnt] + 2 \
+                                and visited[x][y][cnt] % 2 == 0:
+                            visited[nx][ny][cnt + 1] = visited[x][y][cnt] + 2
+                            q.append((nx, ny, cnt + 1))
     if min(visited[N - 1][M - 1]) == 1e9:
         return -1
     else:
         return min(visited[N - 1][M - 1])
-
 print(bfs())
-
 
