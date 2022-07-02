@@ -24,7 +24,7 @@ dy = [0, 0, -1, 1]
 while 1:
     flag = 1
     for p in range(1, P + 1):
-        for _ in range(S[p]):
+        for _ in range(min(S[p], max(N, M))):
             for _ in range(len(Q[p])):
                 x, y = Q[p].popleft()
                 for i in range(4):
