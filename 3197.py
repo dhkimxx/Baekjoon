@@ -30,8 +30,8 @@ while 1:
         for i in range(4):
             nx, ny = x + dx[i], y + dy[i]
             if 0 <= nx < R and 0 <= ny < C:
-                if visited_swan[x][y] != visited_swan[nx][ny] and \
-                        visited_swan[x][y] + visited_swan[nx][ny] == 0\
+                if visited_swan[x][y] != visited_swan[nx][ny] \
+                        and visited_swan[x][y] + visited_swan[nx][ny] == 0\
                         and graph[nx][ny] != 'X':
                     print(day)
                     exit()
