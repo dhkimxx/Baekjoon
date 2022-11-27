@@ -16,15 +16,11 @@ for _ in range(int(input())):
     for m in range(M):
         a, b = map(int, input().split())
         if b in graph[a]:
-            graph[a].remove(b)
-            graph[b].append(a)
-            inDegree[a] += 1
-            inDegree[b] -= 1
-        else:
-            graph[b].remove(a)
-            graph[a].append(b)
-            inDegree[b] += 1
-            inDegree[a] -= 1
+            a, b = b, a
+        graph[b].remove(a)
+        graph[a].append(b)
+        inDegree[b] += 1
+        inDegree[a] -= 1
 
     q = deque()
     for i in range(N):
@@ -32,21 +28,15 @@ for _ in range(int(input())):
             q.append(T[i])
 
     ans = []
-    flag = 0
     while q:
-        if len(q) > 1:
-            print("?")
-            flag = 1
-            break
         now = q.popleft()
         ans.append(now)
         for next in graph[now]:
             inDegree[next] -= 1
             if inDegree[next] == 0:
                 q.append(next)
-    if flag:
-        continue
-    elif len(ans) != N:
+
+    if len(ans) != N:
         print("IMPOSSIBLE")
     else:
         print(*ans)
