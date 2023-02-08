@@ -1,6 +1,7 @@
 def recursion(s, l, r):
     global cnt
     cnt += 1
+
     if l >= r:
         return 1
     elif s[l] != s[r]:
