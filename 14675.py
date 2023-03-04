@@ -10,8 +10,8 @@ def tree(t, k):
         q = deque([start])
         visited[start] = 1
         while q:
-            s = q.popleft()
-            for i in graph[s]:
+            now = q.popleft()
+            for i, _ in graph[now]:
                 if i != k and not visited[i]:
                     visited[i] = 1
                     q.append(i)
@@ -22,17 +22,29 @@ def tree(t, k):
             return 'yes'
 
     if t == 2:
+        q = deque([start])
+        visited[start] = 1
+        while q:
+            now = q.popleft()
+            for i, _ in graph[now]:
+                if i != k and not visited[i]:
+                    visited[i] = 1
+                    q.append(i)
+
+        if sum(visited) == N - 1:
+            return 'no'
+        else:
+            return 'yes'
 
 
 
 N = int(input())
 graph = [[] for _ in range(N + 1)]
 edge = []
-for _ in range(N - 1):
+for n in range(N - 1):
     a, b = map(int, input().split())
-    edge.append((a, b))
-    graph[a].append(b)
-    graph[b].append(a)
+    graph[a].append([b, n])
+    graph[b].append([a, n])
 
 for q in range(int(input())):
     visited = [0] * (N + 1)
