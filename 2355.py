@@ -1,6 +1,4 @@
-a, b = map(int, input().split())
-n_max = max(a, b)
-n_min = min(a, b)
-n = n_max - n_min
-s = (n * (n + 1)) // 2
-print(s + (n_min * (n + 1)))
+a,b = map(int,input().split())
+if a>b:
+    a,b=b,a
+print(b*(b+1)//2-a*(a-1)//2)
